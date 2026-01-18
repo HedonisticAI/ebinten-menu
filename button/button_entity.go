@@ -4,7 +4,8 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
-type Button interface {
+type Button_Entity interface {
 	TriggerPressed()
 	Form(ebiten.Image)
+	Check() bool
 }

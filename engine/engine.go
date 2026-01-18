@@ -1,13 +1,13 @@
 package engine
 
 import (
-	consts "ebinten-menus/const"
+	"ebinten-menus/consts_types"
 	"ebinten-menus/menu"
 )
 
 type MenuEngine interface {
-	Check()
-	Draw()
-	Add(menu.MenuUC)
-	Show(consts.ID)
+	Check() //run every update
+	Draw()  //run every draw
+	Add(menu.MenuUC) consts_types.ID
+	Show(consts_types.ID)
 }
