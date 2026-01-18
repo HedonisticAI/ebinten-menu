@@ -25,7 +25,7 @@ func (E *ButtonEllipse) IsCollision() (bool, error) {
 }
 
 func (E *ButtonEllipse) ellipse_formula(x int, y int) bool {
-	formula := ((x-E.X)^2)/(E.XAxis^2) + ((y-E.Y)^2)/E.YAxis ^ 2
+	formula := ((x-E.X)^2)/(E.XAxis^2) + ((y-E.Y)^2)/(E.YAxis^2)
 	return formula >= 1
 }
 
