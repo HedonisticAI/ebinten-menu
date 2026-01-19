@@ -1,7 +1,7 @@
 package mouse
 
 import (
-	"ebinten-menus/consts_types"
+	"ebinten-menus/errors_types"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )
@@ -16,7 +16,7 @@ type ButtonEllipse struct {
 func (E *ButtonEllipse) IsCollision() (bool, error) {
 	x, y := ebiten.CursorPosition()
 	if x == 0 && y == 0 && ebiten.Tick() != 0 {
-		return false, consts_types.ErrMouseNotSupported
+		return false, errors_types.ErrMouseNotSupported
 	}
 	if E.ellipse_formula(x, y) {
 		return true, nil
@@ -38,7 +38,7 @@ type ButtonRound struct {
 func (R *ButtonRound) IsCollision() (bool, error) {
 	x, y := ebiten.CursorPosition()
 	if x == 0 && y == 0 && ebiten.Tick() != 0 {
-		return false, consts_types.ErrMouseNotSupported
+		return false, errors_types.ErrMouseNotSupported
 	}
 	if (x <= R.X+R.Raduis && x >= R.X-R.Raduis) && (y <= R.Y+R.Raduis && y >= R.Y-R.Raduis) {
 		return true, nil
@@ -56,7 +56,7 @@ type ButtonRectangle struct {
 func (B *ButtonRectangle) IsCollision() (bool, error) {
 	x, y := ebiten.CursorPosition()
 	if x == 0 && y == 0 && ebiten.Tick() != 0 {
-		return false, consts_types.ErrMouseNotSupported
+		return false, errors_types.ErrMouseNotSupported
 	}
 	if (x <= B.X) && (x >= B.X+B.Lenght) && (y <= B.Y) && (y >= B.Y-B.Width) {
 		return true, nil

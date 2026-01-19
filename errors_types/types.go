@@ -1,4 +1,4 @@
-package consts_types
+package errors_types
 
 type ButtonView struct{}
 
