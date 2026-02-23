@@ -1,11 +1,11 @@
 package menu
 
 import (
-	"ebinten-menus/button"
 	"ebinten-menus/format"
+	"ebinten-menus/object"
 )
 
 type Menu struct {
-	Buttons []button.Button_Entity
+	Buttons []object.Object_Entity
 	Format  format.Format
 }

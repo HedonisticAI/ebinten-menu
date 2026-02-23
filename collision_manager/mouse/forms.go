@@ -1,22 +1,31 @@
 package mouse
 
 import (
-	"ebinten-menus/errors_types"
+	"ebinten-menus/errors"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
 type ButtonEllipse struct {
-	X     int
-	Y     int
-	XAxis int
-	YAxis int
+	Active bool
+	X      int
+	Y      int
+	XAxis  int
+	YAxis  int
+}
+
+func (E *ButtonEllipse) SetActive(Active bool) {
+	E.Active = Active
+}
+
+func (E *ButtonEllipse) IsActive() bool {
+	return E.Active
 }
 
 func (E *ButtonEllipse) IsCollision() (bool, error) {
 	x, y := ebiten.CursorPosition()
 	if x == 0 && y == 0 && ebiten.Tick() != 0 {
-		return false, errors_types.ErrMouseNotSupported
+		return false, errors.ErrMouseNotSupported
 	}
 	if E.ellipse_formula(x, y) {
 		return true, nil
@@ -30,15 +39,24 @@ func (E *ButtonEllipse) ellipse_formula(x int, y int) bool {
 }
 
 type ButtonRound struct {
+	Active bool
 	X      int
 	Y      int
 	Raduis int
 }
 
+func (E *ButtonRound) SetActive(Active bool) {
+	E.Active = Active
+}
+
+func (E *ButtonRound) IsActive() bool {
+	return E.Active
+}
+
 func (R *ButtonRound) IsCollision() (bool, error) {
 	x, y := ebiten.CursorPosition()
 	if x == 0 && y == 0 && ebiten.Tick() != 0 {
-		return false, errors_types.ErrMouseNotSupported
+		return false, errors.ErrMouseNotSupported
 	}
 	if (x <= R.X+R.Raduis && x >= R.X-R.Raduis) && (y <= R.Y+R.Raduis && y >= R.Y-R.Raduis) {
 		return true, nil
@@ -47,16 +65,24 @@ func (R *ButtonRound) IsCollision() (bool, error) {
 }
 
 type ButtonRectangle struct {
+	Active bool
 	X      int // upper left
 	Y      int //
 	Lenght int
 	Width  int
 }
 
+func (E *ButtonRectangle) SetActive(Active bool) {
+	E.Active = Active
+}
+
+func (E *ButtonRectangle) IsActive() bool {
+	return E.Active
+}
 func (B *ButtonRectangle) IsCollision() (bool, error) {
 	x, y := ebiten.CursorPosition()
 	if x == 0 && y == 0 && ebiten.Tick() != 0 {
-		return false, errors_types.ErrMouseNotSupported
+		return false, errors.ErrMouseNotSupported
 	}
 	if (x <= B.X) && (x >= B.X+B.Lenght) && (y <= B.Y) && (y >= B.Y-B.Width) {
 		return true, nil

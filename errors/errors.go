@@ -1,4 +1,4 @@
-package errors_types
+package errors
 
 import "errors"
 

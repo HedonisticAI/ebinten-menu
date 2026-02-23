@@ -1,13 +1,13 @@
 package engine
 
 import (
-	"ebinten-menus/errors_types"
 	"ebinten-menus/menu"
+	types "ebinten-menus/types"
 )
 
 type MenuEngine interface {
 	Check() //run every update
 	Draw()  //run every draw
-	Add(menu.MenuUC) errors_types.ID
-	Show(errors_types.ID)
+	Add(menu.MenuUC) types.ID
+	Show(types.ID)
 }

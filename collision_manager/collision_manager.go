@@ -1,5 +1,6 @@
 package collision_manager
 
-type Collision_manager interface {
-	IsCollision() (bool, error)
+type Controller interface {
+	Status() ControllerResponse
+	SetActive(bool)
 }
