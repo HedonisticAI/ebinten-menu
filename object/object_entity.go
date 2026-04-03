@@ -1,13 +1,13 @@
 package object
 
 import (
-	"ebinten-menus/collision_manager"
+	"ebinten-menus/controller"
 	"ebinten-menus/drawer"
 )
 
 type Object_Entity interface {
 	GetDrawer() drawer.Drawer
-	GetCollisionManagers() []collision_manager.Controller
-	NewManager(collision_manager.Controller) error
+	GetCollisionManagers() []controller.Controller
+	NewManager(controller.Controller) error
 	ReplaceDrawer(drawer.Drawer)
 }
